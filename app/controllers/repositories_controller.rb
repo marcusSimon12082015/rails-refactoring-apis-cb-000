@@ -9,7 +9,7 @@ class RepositoriesController < ApplicationController
   def create
     #response = Faraday.post "https://api.github.com/user/repos", {name: params[:name]}.to_json, {'Authorization' => "token #{session[:token]}", 'Accept' => 'application/json'}
     github_service = GithubService.new
-    github_service.create_repo(params[:name])
+    response = github_service.create_repo(params[:name])
     redirect_to '/'
   end
 end
